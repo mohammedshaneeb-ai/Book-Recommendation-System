@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Recommendations</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for the page */
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Book Recommendations</a>
+    <ul class="navbar-nav mx-auto justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="recommend.html">Recommendations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Recommended Books</h1>
+    <form action="/recommend_books" method="post">
+      <div class="form-group">
+        <label for="recommendation">Enter your recommended book:</label>
+        <input name="user_input" type="text" class="form-control" id="recommendation">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% if data %}
+      <h2>Recommended Books:</h2>
+      <ul id="recommendedBooks">
+        <!-- The recommended books will be dynamically added here -->
+          <div class="row">
+
+            {% for i in data %}
+              <div class="container col-md-4">
+                  <div class="card" style="width: 18rem;">
+                      <img src="{{i[2]}}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title">{{i[0]}}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{i[1]}}</h6>
+                          
+                      </div>
+                    </div>
+                  </div>
+          
+          {% endfor %}
+        </div>
+      </ul>
+    {% endif %}
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- <script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var recommendation = document.getElementById('recommendation').value;
+      var recommendedBooks = document.getElementById('recommendedBooks');
+      var listItem = document.createElement('li');
+      listItem.textContent = recommendation;
+      recommendedBooks.appendChild(listItem);
+    });
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Recommendations</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for the page */
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Book Recommendations</a>
+        <ul class="navbar-nav mx-auto justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/recommend">Recommendations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      
+
+  <div class="container">
+    
+    <h1>Top 50 Books</h1>
+    <div class="row">
+        {% for i in range(book_name | length) %}
+        <div class="container col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ image[i] }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book_name[i] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{author_name[i]}}</h6>
+                    <p class="card-text">Votes : {{votes[i]}}</p>
+                    <p class="card-text">Rating : {{rating[i]| round(1) }}</p>
+                </div>
+              </div>
+            </div>
+
+        {% endfor %}
+    
+        
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
